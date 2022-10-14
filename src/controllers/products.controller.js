@@ -1,10 +1,10 @@
-// const { productsService } = require('../services/products.service');
+const { productsService } = require('../services/products.service');
 
-// const productsController = async () => {
-//   const products = await productsService.listProducts();
-//   return { type: null, message: products };
-// };
+const getAllProductsController = async (_req, res) => {
+  const products = await productsService.getAllProductsService();
+  res.status(products.status).json(products.message);
+};
 
-// module.exports = {
-//   productsController,
-// };
+module.exports = {
+  getAllProductsController,
+};

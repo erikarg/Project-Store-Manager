@@ -1,6 +1,6 @@
 const express = require('express');
 const { productNotFound } = require('./helpers/errorMessages');
-const { OK, PageNotFound } = require('./helpers/statusCodes');
+const { OK, PageNotFound, Created } = require('./helpers/statusCodes');
 const connection = require('./models/database/connection');
 
 const productsService = require('./services/products.service');
@@ -29,6 +29,17 @@ app.get('/products/:id', async (req, res) => {
     return res.status(OK).json(result[0]);
   }
   return res.status(PageNotFound).json({ message: productNotFound });
+});
+
+app.post('/products', async (req, res) => {
+  const { name } = req.body;
+  const [productId] = await connection.execute(
+    'INSERT INTO products (name) VALUES (?)',
+    [name],
+  );
+  const newProduct = { id: productId.insertId, name };
+
+  return res.status(Created).json(newProduct);
 });
 
 // não remova essa exportação, é para o avaliador funcionar
