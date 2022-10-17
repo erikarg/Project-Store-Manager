@@ -1,18 +1,23 @@
-const { productNotFound } = require('../helpers/errorMessages');
-const { OK, PageNotFound } = require('../helpers/statusCodes');
-const { productsModel } = require('../models');
+const statusCodes = require('../helpers/statusCodes');
+const errorMessages = require('../helpers/errorMessages');
+const productsModel = require('../models/products.model');
+const { idValidation } = require('./validations/inputsValidations');
 
-const getAllProductsService = async () => {
+const getProductsList = async () => {
   const result = await productsModel.listAllProducts();
-  if (result.length > 0) {
-    return { message: result, status: OK };
-  }
-  return {
-    message: productNotFound,
-    status: PageNotFound,
-  };
+  if (result.length > 0) return { status: statusCodes.OK, message: result };
+  return { status: statusCodes.PageNotFound, message: errorMessages.productNotFound };
+};
+
+const getProductsById = async (id) => {
+  const error = await idValidation(id);
+  if (error.status) return error;
+
+  const result = await productsModel.listProductsById(id);
+  return { status: null, message: result };
 };
 
 module.exports = {
-  getAllProductsService,
+  getProductsList,
+  getProductsById,
 };

@@ -1,45 +1,14 @@
 const express = require('express');
-const { productNotFound } = require('./helpers/errorMessages');
-const { OK, PageNotFound, Created } = require('./helpers/statusCodes');
-const connection = require('./models/database/connection');
-
-const productsService = require('./services/products.service');
+const { productRouter } = require('./router/products.router');
 
 const app = express();
 
 app.use(express.json());
+app.use('/products', productRouter);
 
 // não remova esse endpoint, é para o avaliador funcionar
 app.get('/', (_request, response) => {
   response.send();
-});
-
-app.get('/products', async (_req, res) => {
-  const result = await productsService.getAllProductsService();
-  res.status(result.status).json(result.message);
-});
-
-app.get('/products/:id', async (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const [result] = await connection.execute(
-    'SELECT * FROM products WHERE id = ?',
-    [id],
-  );
-  if (result.length > 0) {
-    return res.status(OK).json(result[0]);
-  }
-  return res.status(PageNotFound).json({ message: productNotFound });
-});
-
-app.post('/products', async (req, res) => {
-  const { name } = req.body;
-  const [productId] = await connection.execute(
-    'INSERT INTO products (name) VALUES (?)',
-    [name],
-  );
-  const newProduct = { id: productId.insertId, name };
-
-  return res.status(Created).json(newProduct);
 });
 
 // não remova essa exportação, é para o avaliador funcionar

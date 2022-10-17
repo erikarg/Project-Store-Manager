@@ -36,8 +36,19 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-10-11T20:37:31.915Z",
-    "modified": "2022-10-11T22:44:49.754Z",
-    "headers": [],
+    "modified": "2022-10-17T17:09:28.457Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },
@@ -74,11 +85,11 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/products/",
-    "url": "http://localhost:3000/products",
-    "method": "POST",
+    "url": "http://localhost:3000/products/2",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-10-13T21:14:24.860Z",
-    "modified": "2022-10-14T22:45:21.494Z",
+    "modified": "2022-10-17T17:12:55.668Z",
     "headers": [
       {
         "name": "Accept",
@@ -92,11 +103,131 @@
       }
     ],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n  \"name\": \"ProdutoX\"\n}",
-      "form": []
-    },
+    "tests": []
+  },
+  {
+    "_id": "bb91ad09-7a3b-4dfd-a61c-4b3a5bba4e4e",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://localhost:3000/products/1",
+    "url": "https://localhost:3000/products/1",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-17T17:09:36.649Z",
+    "modified": "2022-10-17T17:11:03.413Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "d3d02e96-09aa-47e8-950f-5a368b1b02d5",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://localhost:3000/products/",
+    "url": "https://localhost:3000/products/",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-17T17:11:08.892Z",
+    "modified": "2022-10-17T17:12:24.535Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b8aa011a-0c5c-467f-bb29-83cf1e64a0c3",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/",
+    "url": "http://localhost:3000/products/",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-17T17:12:50.247Z",
+    "modified": "2022-10-17T20:48:26.784Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "91bb97a5-13c9-4c1c-ba94-328502e302fb",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/999",
+    "url": "http://localhost:3000/products/999",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-17T17:15:41.966Z",
+    "modified": "2022-10-17T21:48:22.801Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f1d473d5-85f2-4505-90de-8f7386572121",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/1",
+    "url": "http://localhost:3000/products/1",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-17T17:18:19.014Z",
+    "modified": "2022-10-17T21:07:20.611Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
     "tests": []
   }
 ]
