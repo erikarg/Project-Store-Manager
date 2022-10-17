@@ -15,7 +15,17 @@ const getProductsByIdController = async (req, res) => {
   res.status(statusCodes.OK).json(message);
 };
 
+const registerProductController = async (req, res) => {
+  const { name } = req.body;
+  const { status, message } = await productsService.getRegisteredProduct(name);
+
+  if (status) return res.status(statusCodes.BadRequest).json(message);
+
+  res.status(statusCodes.Created).json(message);
+};
+
 module.exports = {
   getAllProductsController,
   getProductsByIdController,
+  registerProductController,
 };
