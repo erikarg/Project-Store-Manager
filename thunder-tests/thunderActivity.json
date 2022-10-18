@@ -264,7 +264,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2022-10-17T21:58:47.501Z",
-    "modified": "2022-10-17T23:36:08.684Z",
+    "modified": "2022-10-18T00:19:24.868Z",
     "headers": [
       {
         "name": "Accept",
@@ -280,7 +280,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"ProdutoX\"\n}",
+      "raw": "{\n  \"name\": \"Prod\"\n}",
       "form": []
     },
     "tests": []

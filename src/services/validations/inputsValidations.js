@@ -19,7 +19,17 @@ const nameValidation = async (name) => {
   return { type: null, message: '' };
 };
 
+const productValidation = async ({ id }) => {
+  const name = await productsModel.listProductsById(id);
+  if (!name) return { status: statusCodes.BadRequest, message: errorMessages.nameNotFound };
+  if (name.length < 5) {
+    return { status: statusCodes.UnprocessableEntity, message: errorMessages.nameTooShort };
+  }
+  return { status: null, message: '' };
+};
+
 module.exports = {
   idValidation,
   nameValidation,
+  productValidation,
 };

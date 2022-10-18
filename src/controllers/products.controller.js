@@ -1,4 +1,3 @@
-// const errorMessages = require('../helpers/errorMessages');
 const statusCodes = require('../helpers/statusCodes');
 const productsService = require('../services/products.service');
 
