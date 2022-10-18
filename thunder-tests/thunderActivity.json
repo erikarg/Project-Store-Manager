@@ -61,8 +61,19 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-10-13T20:28:21.328Z",
-    "modified": "2022-10-13T21:14:21.388Z",
-    "headers": [],
+    "modified": "2022-10-18T19:12:44.748Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
     "params": [],
     "tests": []
   },

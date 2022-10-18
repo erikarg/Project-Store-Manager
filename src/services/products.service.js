@@ -23,7 +23,6 @@ const getRegisteredProduct = async (name) => {
 
   const newProduct = await productsModel.registerProduct({ name });
   const insertNewProduct = await productsModel.listProductsById(newProduct);
-
   return { status: null, message: insertNewProduct };
 };
 
