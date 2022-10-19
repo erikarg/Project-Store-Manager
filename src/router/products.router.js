@@ -20,6 +20,12 @@ productRouter.get(
   productController.getProductsByIdController,
 );
 
+productRouter.put(
+  '/:id',
+  validateNewProduct,
+  productController.updateProductController,
+);
+
 module.exports = {
   productRouter,
 };

@@ -7,8 +7,9 @@ const { nameSchema } = require('./schemas');
 const idValidation = async (id) => {
   const result = await productsModel.listProductsById(id);
 
-  if (!result) return { status: statusCodes.PageNotFound, message: errorMessages.productNotFound };
-
+  if (!result || result.length === 0) {
+    return { status: statusCodes.PageNotFound, message: errorMessages.productNotFound };
+  }
   return { status: null, message: '' };
 };
 

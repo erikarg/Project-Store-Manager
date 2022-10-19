@@ -23,8 +23,19 @@ const registerProductController = async (req, res) => {
   res.status(statusCodes.Created).json(message);
 };
 
+const updateProductController = async (req, res) => {
+  const { name } = req.body;
+  const { id } = req.params;
+  const { status, message } = await productsService.getUpdatedProduct(Number(id), name);
+
+  if (status) return res.status(statusCodes.PageNotFound).json({ message });
+
+  res.status(statusCodes.OK).json(message);
+};
+
 module.exports = {
   getAllProductsController,
   getProductsByIdController,
   registerProductController,
+  updateProductController,
 };
