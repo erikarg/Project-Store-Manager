@@ -2,7 +2,7 @@ const errorMessages = require('../helpers/errorMessages');
 const statusCodes = require('../helpers/statusCodes');
 const productService = require('../services/products.service');
 
-const validateNewProduct = async (req, res, next) => {
+const validateProduct = async (req, res, next) => {
   const { name } = req.body;
 
   if (!name) {
@@ -83,7 +83,7 @@ const validateQuantity = async (req, res, next) => {
 };
 
 module.exports = {
-  validateNewProduct,
+  validateProduct,
   validateQuantity,
   validateProductId,
   validateExistingProduct,

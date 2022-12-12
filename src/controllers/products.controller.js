@@ -1,41 +1,49 @@
+const errorMessages = require('../helpers/errorMessages');
 const statusCodes = require('../helpers/statusCodes');
 const productsService = require('../services/products.service');
 
-const getAllProductsController = async (_req, res) => {
+const getAllProducts = async (_req, res) => {
   const products = await productsService.getProductsList();
   res.status(products.status).json(products.message);
 };
 
-const getProductsByIdController = async (req, res) => {
+const getProductsById = async (req, res) => {
   const { id } = req.params;
   const { status, message } = await productsService.getProductsById(Number(id));
-  if (status) return res.status(statusCodes.PageNotFound).json({ message });
 
+  if (status) return res.status(statusCodes.PageNotFound).json({ message });
   res.status(statusCodes.OK).json(message);
 };
 
-const registerProductController = async (req, res) => {
+const registerProduct = async (req, res) => {
   const { name } = req.body;
   const { status, message } = await productsService.getRegisteredProduct(name);
 
   if (status) return res.status(statusCodes.BadRequest).json(message);
-
   res.status(statusCodes.Created).json(message);
 };
 
-const updateProductController = async (req, res) => {
+const updateProduct = async (req, res) => {
   const { name } = req.body;
   const { id } = req.params;
   const { status, message } = await productsService.getUpdatedProduct(Number(id), name);
 
   if (status) return res.status(statusCodes.PageNotFound).json({ message });
-
   res.status(statusCodes.OK).json(message);
 };
 
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  const { status } = await productsService.deleteProduct(id);
+
+  if (status) return res.status(status).json({ message: errorMessages.productNotFound });
+  res.status(statusCodes.NoContent).json();
+};
+
 module.exports = {
-  getAllProductsController,
-  getProductsByIdController,
-  registerProductController,
-  updateProductController,
+  getAllProducts,
+  getProductsById,
+  registerProduct,
+  updateProduct,
+  deleteProduct,
 };

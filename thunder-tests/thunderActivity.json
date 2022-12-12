@@ -621,11 +621,11 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/sales",
-    "url": "http://localhost:3000/sales",
-    "method": "POST",
+    "url": "http://localhost:3000/products/3",
+    "method": "DELETE",
     "sortNum": 0,
     "created": "2022-10-19T20:02:10.329Z",
-    "modified": "2022-10-19T21:22:20.653Z",
+    "modified": "2022-12-12T20:16:49.236Z",
     "headers": [
       {
         "name": "Accept",
@@ -639,11 +639,6 @@
       }
     ],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  }\n]",
-      "form": []
-    },
     "tests": []
   }
 ]

@@ -35,9 +35,18 @@ const getUpdatedProduct = async (id, data) => {
   return { status: null, message: insertUpdatedProduct };
 };
 
+const deleteProduct = async (id) => {
+  const error = await inputsValidations.idValidation(id);
+  if (error.status) return { status: error.status, message: errorMessages.productNotFound };
+
+  const action = await productsModel.eraseProduct(id);
+  return { status: null, message: action };
+};
+
 module.exports = {
   getProductsList,
   getProductsById,
   getRegisteredProduct,
   getUpdatedProduct,
+  deleteProduct,
 };
