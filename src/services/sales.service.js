@@ -29,8 +29,17 @@ const registerNewSale = async (sale) => {
   return { type: statusCodes.PageNotFound, message: errorMessages.productNotFound };
 };
 
+const deleteNewSale = async (id) => {
+  const error = await inputsValidations.idValidation(id);
+  if (error.status) return { status: error.status, message: errorMessages.saleNotFound };
+
+  const action = await salesModel.eraseSale(id);
+  return { status: null, message: action };
+};
+
 module.exports = {
   getSalesList,
   getSalesById,
   registerNewSale,
+  deleteNewSale,
 };

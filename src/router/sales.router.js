@@ -9,17 +9,22 @@ salesRouter.post(
   validateNewProduct.validateProductId,
   validateNewProduct.validateQuantity,
   validateNewProduct.validateExistingProduct,
-  salesController.registerNewSaleController,
+  salesController.registerNewSale,
+);
+
+salesRouter.delete(
+  '/:id',
+  salesController.deleteSale,
 );
 
 salesRouter.get(
   '/',
-  salesController.getAllSalesController,
+  salesController.getAllSales,
 );
 
 salesRouter.get(
   '/:id',
-  salesController.getSalesByIdController,
+  salesController.getSalesById,
 );
 
 module.exports = {
