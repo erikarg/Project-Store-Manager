@@ -14,7 +14,14 @@ const getSalesByIdController = async (req, res) => {
   res.status(statusCodes.OK).json(message);
 };
 
+const registerNewSaleController = async (req, res) => {
+  const sale = req.body;
+  const result = await salesService.registerNewSale(sale);
+  return res.status(statusCodes.Created).json(result);
+};
+
 module.exports = {
   getAllSalesController,
   getSalesByIdController,
+  registerNewSaleController,
 };
