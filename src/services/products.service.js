@@ -6,7 +6,10 @@ const inputsValidations = require('./validations/inputsValidations');
 const getProductsList = async () => {
   const result = await productsModel.listAllProducts();
   if (result.length > 0) return { status: statusCodes.OK, message: result };
-  return { status: statusCodes.PageNotFound, message: errorMessages.productNotFound };
+  return {
+    status: statusCodes.PageNotFound,
+    message: errorMessages.productNotFound,
+  };
 };
 
 const getProductsById = async (id) => {
@@ -37,7 +40,7 @@ const getUpdatedProduct = async (id, data) => {
 
 const deleteProduct = async (id) => {
   const error = await inputsValidations.idValidation(id);
-  if (error.status) return { status: error.status, message: errorMessages.productNotFound };
+  if (error.status) { return { status: error.status, message: errorMessages.productNotFound }; }
 
   const action = await productsModel.eraseProduct(id);
   return { status: null, message: action };

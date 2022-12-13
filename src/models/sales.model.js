@@ -25,7 +25,7 @@ const listSalesById = async (newSaleId) => {
     ORDER BY t2.sale_id ASC`,
     [newSaleId],
   );
-    return camelize(result);
+  return camelize(result);
 };
 
 const insertNewSale = async () => {
@@ -52,11 +52,11 @@ const eraseSale = async (id) => {
   return deleting;
 };
 
-const updateSales = async (productId, quantity, id) => {
+const updateSales = async (quantity, id, productId) => {
   const result = await connection.execute(
     `UPDATE StoreManager.sales_products
-    SET product_id = ?, quantity = ? WHERE sale_id = ?`,
-    [productId, quantity, id],
+    SET quantity = ? WHERE sale_id = ? AND product_id = ?`,
+    [quantity, id, productId],
   );
   return result;
 };

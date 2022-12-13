@@ -24,15 +24,18 @@ const getSalesById = async (id) => {
 const registerNewSale = async (sale) => {
   const saleId = await salesModel.insertNewSale();
   const promises = await sale.map((item) =>
-    salesModel.updateSales(saleId, item.productId, item.quantity));
+    salesModel.registerSales(saleId, item.productId, item.quantity));
   const promisesResult = await Promise.all(promises);
   if (promisesResult) return { id: saleId, itemsSold: sale };
-  return { type: statusCodes.PageNotFound, message: errorMessages.productNotFound };
+  return {
+    type: statusCodes.PageNotFound,
+    message: errorMessages.productNotFound,
+  };
 };
 
 const deleteNewSale = async (id) => {
   const error = await inputsValidations.idValidation(id);
-  if (error.status) return { status: error.status, message: errorMessages.saleNotFound };
+  if (error.status) { return { status: error.status, message: errorMessages.saleNotFound }; }
 
   const action = await salesModel.eraseSale(id);
   return { status: null, message: action };
@@ -40,7 +43,7 @@ const deleteNewSale = async (id) => {
 
 const updateNewSale = async (id, sale) => {
   const promises = await sale.map((item) =>
-    salesModel.updateSales(item.productId, item.quantity, id));
+    salesModel.updateSales(item.quantity, id, item.productId));
   const promisesResult = await Promise.all(promises);
   const verification = await productsService.getProductsById(id);
   if (!promisesResult || verification.status) {

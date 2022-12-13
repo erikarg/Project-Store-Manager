@@ -10,25 +10,13 @@ productRouter.post(
   productController.registerProduct,
 );
 
-productRouter.delete(
-  '/:id',
-  productController.deleteProduct,
-);
+productRouter.delete('/:id', productController.deleteProduct);
 
-productRouter.get(
-  '/search',
-  productController.getProductsBySearch,
-);
+productRouter.get('/search', productController.getProductsBySearch);
 
-productRouter.get(
-  '/',
-  productController.getAllProducts,
-);
+productRouter.get('/', productController.getAllProducts);
 
-productRouter.get(
-  '/:id',
-  productController.getProductsById,
-);
+productRouter.get('/:id', productController.getProductsById);
 
 productRouter.put(
   '/:id',

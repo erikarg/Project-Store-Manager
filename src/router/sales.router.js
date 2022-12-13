@@ -20,20 +20,11 @@ salesRouter.put(
   salesController.updateSale,
 );
 
-salesRouter.delete(
-  '/:id',
-  salesController.deleteSale,
-);
+salesRouter.delete('/:id', salesController.deleteSale);
 
-salesRouter.get(
-  '/',
-  salesController.getAllSales,
-);
+salesRouter.get('/', salesController.getAllSales);
 
-salesRouter.get(
-  '/:id',
-  salesController.getSalesById,
-);
+salesRouter.get('/:id', salesController.getSalesById);
 
 module.exports = {
   salesRouter,

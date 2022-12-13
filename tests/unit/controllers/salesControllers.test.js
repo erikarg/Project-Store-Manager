@@ -17,7 +17,7 @@ describe("Teste de unidade do salesController", function () {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
     sinon
-      .stub(salesService, 'getSalesList')
+      .stub(salesService, "getSalesList")
       .resolves({ status: 200, message: rightSaleBody });
 
     await salesController.getAllSales({}, res);

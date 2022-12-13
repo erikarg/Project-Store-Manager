@@ -26,7 +26,10 @@ const registerProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { name } = req.body;
   const { id } = req.params;
-  const { status, message } = await productsService.getUpdatedProduct(Number(id), name);
+  const { status, message } = await productsService.getUpdatedProduct(
+    Number(id),
+    name,
+  );
 
   if (status) return res.status(statusCodes.PageNotFound).json({ message });
   res.status(statusCodes.OK).json(message);
@@ -36,7 +39,7 @@ const deleteProduct = async (req, res) => {
   const { id } = req.params;
   const { status } = await productsService.deleteProduct(id);
 
-  if (status) return res.status(status).json({ message: errorMessages.productNotFound });
+  if (status) { return res.status(status).json({ message: errorMessages.productNotFound }); }
   res.status(statusCodes.NoContent).json();
 };
 

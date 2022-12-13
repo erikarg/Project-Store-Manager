@@ -34,17 +34,21 @@ const checkErrors = (list) => {
 
 const validateExistingProduct = async (req, res, next) => {
   const sale = req.body;
-  const result = await Promise.all(sale.map(async (item) => {
-    const product = await verifyExistingProduct(item.productId);
-    if (product) {
-      return {
-        status: statusCodes.PageNotFound,
-        message: errorMessages.productNotFound,
-      };
-    }
-  }));
+  const result = await Promise.all(
+    sale.map(async (item) => {
+      const product = await verifyExistingProduct(item.productId);
+      if (product) {
+        return {
+          status: statusCodes.PageNotFound,
+          message: errorMessages.productNotFound,
+        };
+      }
+    }),
+  );
   if (checkErrors(result)) {
-    return res.status(checkErrors(result).status).json({ message: checkErrors(result).message });
+    return res
+      .status(checkErrors(result).status)
+      .json({ message: checkErrors(result).message });
   }
   return next();
 };
@@ -53,12 +57,17 @@ const validateProductId = async (req, res, next) => {
   const sale = req.body;
   const results = sale.map((item) => {
     if (item.quantity <= 0) {
-      return { status: statusCodes.UnprocessableEntity, message: errorMessages.quantityTooShort };
+      return {
+        status: statusCodes.UnprocessableEntity,
+        message: errorMessages.quantityTooShort,
+      };
     }
     return undefined;
   });
   if (checkErrors(results)) {
-    return res.status(checkErrors(results).status).json({ message: checkErrors(results).message });
+    return res
+      .status(checkErrors(results).status)
+      .json({ message: checkErrors(results).message });
   }
   return next();
 };

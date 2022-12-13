@@ -22,7 +22,7 @@ describe("Testes de unidade do model de serviços", function () {
     expect(result.message).to.deep.equal(rightSaleBody[0]);
   });
   it("Testa se há erro caso a venda não exista", async function () {
-    sinon.stub(salesModel, 'listSalesById').resolves(undefined);
+    sinon.stub(salesModel, "listSalesById").resolves(undefined);
     const result = await salesService.getSalesById(1);
     expect(result.status).to.equal(404);
     expect(result.message).to.equal("Sale not found");

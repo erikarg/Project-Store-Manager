@@ -25,7 +25,7 @@ const deleteSale = async (req, res) => {
   const { id } = req.params;
   const { status } = await salesService.deleteNewSale(id);
 
-  if (status) return res.status(status).json({ message: errorMessages.saleNotFound });
+  if (status) { return res.status(status).json({ message: errorMessages.saleNotFound }); }
   res.status(statusCodes.NoContent).json();
 };
 
@@ -34,7 +34,9 @@ const updateSale = async (req, res) => {
   const sale = req.body;
   const result = await salesService.updateNewSale(id, sale);
   if (result.status === 404) {
-    return res.status(statusCodes.PageNotFound).json({ message: errorMessages.saleNotFound });
+    return res
+      .status(statusCodes.PageNotFound)
+      .json({ message: errorMessages.saleNotFound });
   }
   return res.status(statusCodes.OK).json(result);
 };

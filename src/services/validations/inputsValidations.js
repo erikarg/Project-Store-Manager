@@ -8,7 +8,10 @@ const idValidation = async (id) => {
   const result = await productsModel.listProductsById(id);
 
   if (!result || result.length === 0) {
-    return { status: statusCodes.PageNotFound, message: errorMessages.productNotFound };
+    return {
+      status: statusCodes.PageNotFound,
+      message: errorMessages.productNotFound,
+    };
   }
   return { status: null, message: '' };
 };
@@ -17,9 +20,12 @@ const idValidationSales = async (id) => {
   const result = await salesModel.listSalesById(id);
 
   if (!result || result.length === 0) {
-    return { status: statusCodes.PageNotFound, message: errorMessages.saleNotFound };
+    return {
+      status: statusCodes.PageNotFound,
+      message: errorMessages.saleNotFound,
+    };
   }
-    return { status: null, message: '' };
+  return { status: null, message: '' };
 };
 
 const nameValidation = async (name) => {
@@ -32,9 +38,17 @@ const nameValidation = async (name) => {
 
 const productValidation = async ({ id }) => {
   const name = await productsModel.listProductsById(id);
-  if (!name) return { status: statusCodes.BadRequest, message: errorMessages.nameNotFound };
+  if (!name) {
+ return {
+      status: statusCodes.BadRequest,
+      message: errorMessages.nameNotFound,
+    };
+}
   if (name.length < 5) {
-    return { status: statusCodes.UnprocessableEntity, message: errorMessages.nameTooShort };
+    return {
+      status: statusCodes.UnprocessableEntity,
+      message: errorMessages.nameTooShort,
+    };
   }
   return { status: null, message: '' };
 };

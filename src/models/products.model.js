@@ -17,13 +17,13 @@ const listProductsById = async (id) => {
 };
 
 const registerProduct = async (product) => {
-  const columns = Object.keys(snakeize(product)).map(
-    (key) => `${key}`,
-  ).join(', ');
+  const columns = Object.keys(snakeize(product))
+    .map((key) => `${key}`)
+    .join(', ');
 
-  const placeholders = Object.keys(product).map(
-    (_key) => '?',
-  ).join(', ');
+  const placeholders = Object.keys(product)
+    .map((_key) => '?')
+    .join(', ');
 
   const [{ insertId }] = await connection.execute(
     `INSERT INTO StoreManager.products (${columns}) VALUE (${placeholders})`,
