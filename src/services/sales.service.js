@@ -24,7 +24,7 @@ const getSalesById = async (id) => {
 const registerNewSale = async (sale) => {
   const saleId = await salesModel.insertNewSale();
   const promises = await sale.map((item) =>
-    salesModel.update(saleId, item.productId, item.quantity));
+    salesModel.updateSales(saleId, item.productId, item.quantity));
   const promisesResult = await Promise.all(promises);
   if (promisesResult) return { id: saleId, itemsSold: sale };
   return { type: statusCodes.PageNotFound, message: errorMessages.productNotFound };

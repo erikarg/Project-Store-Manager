@@ -20,7 +20,7 @@ describe("Teste de unidade do salesController", function () {
       .stub(salesService, 'getSalesList')
       .resolves({ status: 200, message: rightSaleBody });
 
-    await salesController.getAllSalesController({}, res);
+    await salesController.getAllSales({}, res);
     expect(res.status).to.have.been.calledOnceWith(200);
     expect(res.json).to.have.been.calledOnceWith(rightSaleBody);
   });
@@ -36,7 +36,7 @@ describe("Teste de unidade do salesController", function () {
       .stub(salesService, "getSalesById")
       .resolves({ status: null, message: otherProductIdSaleBody });
 
-    await salesController.getSalesByIdController(req, res);
+    await salesController.getSalesById(req, res);
     expect(res.status).to.have.been.calledOnceWith(200);
     expect(res.json).to.have.been.calledOnceWith(otherProductIdSaleBody);
   });

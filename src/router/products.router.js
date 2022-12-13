@@ -16,13 +16,13 @@ productRouter.delete(
 );
 
 productRouter.get(
-  '/',
-  productController.getAllProducts,
+  '/search',
+  productController.getProductsBySearch,
 );
 
 productRouter.get(
-  '/search',
-  productController.getProductsBySearch,
+  '/',
+  productController.getAllProducts,
 );
 
 productRouter.get(
