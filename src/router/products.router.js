@@ -21,6 +21,11 @@ productRouter.get(
 );
 
 productRouter.get(
+  '/search',
+  productController.getProductsBySearch,
+);
+
+productRouter.get(
   '/:id',
   productController.getProductsById,
 );

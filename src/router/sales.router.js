@@ -12,6 +12,14 @@ salesRouter.post(
   salesController.registerNewSale,
 );
 
+salesRouter.put(
+  '/:id',
+  validateNewProduct.validateProductId,
+  validateNewProduct.validateQuantity,
+  validateNewProduct.validateExistingProduct,
+  salesController.updateSale,
+);
+
 salesRouter.delete(
   '/:id',
   salesController.deleteSale,

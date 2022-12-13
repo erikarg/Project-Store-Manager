@@ -1,6 +1,7 @@
 const statusCodes = require('../helpers/statusCodes');
 const errorMessages = require('../helpers/errorMessages');
 const salesModel = require('../models/sales.model');
+const productsService = require('./products.service');
 const inputsValidations = require('./validations/inputsValidations');
 
 const getSalesList = async () => {
@@ -23,7 +24,7 @@ const getSalesById = async (id) => {
 const registerNewSale = async (sale) => {
   const saleId = await salesModel.insertNewSale();
   const promises = await sale.map((item) =>
-    salesModel.registerSales(saleId, item.productId, item.quantity));
+    salesModel.update(saleId, item.productId, item.quantity));
   const promisesResult = await Promise.all(promises);
   if (promisesResult) return { id: saleId, itemsSold: sale };
   return { type: statusCodes.PageNotFound, message: errorMessages.productNotFound };
@@ -37,9 +38,24 @@ const deleteNewSale = async (id) => {
   return { status: null, message: action };
 };
 
+const updateNewSale = async (id, sale) => {
+  const promises = await sale.map((item) =>
+    salesModel.updateSales(item.productId, item.quantity, id));
+  const promisesResult = await Promise.all(promises);
+  const verification = await productsService.getProductsById(id);
+  if (!promisesResult || verification.status) {
+    return {
+      status: statusCodes.PageNotFound,
+      message: errorMessages.saleNotFound,
+    };
+  }
+  return { saleId: id, itemsUpdated: sale };
+};
+
 module.exports = {
   getSalesList,
   getSalesById,
   registerNewSale,
   deleteNewSale,
+  updateNewSale,
 };

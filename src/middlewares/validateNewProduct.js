@@ -43,7 +43,7 @@ const validateExistingProduct = async (req, res, next) => {
       };
     }
   }));
-    if (checkErrors(result)) {
+  if (checkErrors(result)) {
     return res.status(checkErrors(result).status).json({ message: checkErrors(result).message });
   }
   return next();
